@@ -1,0 +1,1 @@
+g++ -g -O3 gc.cpp -o cut `pkg-config --libs opencv` -lm -I /dccstor/alfassy/anaconda32/envs/kef/include -L /dccstor/alfassy/anaconda32/envs/kef/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
