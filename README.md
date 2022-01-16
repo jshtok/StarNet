@@ -1,7 +1,7 @@
 ## StarNet: Weakly supervised Object detection and classification
 
 <div align="center">
-  <img src="https://drive.google.com/file/d/1P7Qo1Cycn8paGBK5h7sPS9GNtksa7qLy/view?usp=sharing"/>
+  <img src="gate image.PNG"/>
 </div>
 
 This is a Pytorch implementation of the StarNet paper algorithm:
