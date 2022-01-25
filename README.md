@@ -1,7 +1,7 @@
 ## StarNet: Weakly supervised Object detection and classification
 
 <div align="center">
-  <img src="gate image.PNG"/ alt="drawing" width="500"/>
+  <img src="https://drive.google.com/file/d/1P7Qo1Cycn8paGBK5h7sPS9GNtksa7qLy/view?usp=sharing"/>
 </div>
 
 This is a Pytorch implementation of the StarNet paper algorithm:
@@ -53,7 +53,7 @@ python train.py --do_train \
 --save-path "./experiments/train_inloc_1" \
 --val_iters 0 --dataset imagenet-loc --image_res=168 --network=ResNet_star_hi \
 --two_stage=0 --train-shot=1 --train-query=6 --episodes-per-batch=4 \
---scheduler_regime 1 --num-epoch 150 --recompute_dataset_dicts 1
+--scheduler_regime 1 --num-epoch 50 --recompute_dataset_dicts 1
 ```
  Here we use the `168` image size, which is a higher than the standard `84` size used by default. The detections are produced during the evaluation
   phase, which is enabled by setting `--val_iters` to a positive value (recommended to do so after the training, in a separate run as detailed below)
@@ -68,16 +68,18 @@ python train.py --do_train \
 
 ```
 
-### Classification training and evaluation:
-The test accuracy is computed along the training
+### Classification training:
 ```
 python train.py --do_train \
  --save-path=./experiments/cls_cub_01 \
 --dataset=cub  --network=ResNet_star_2stage \
 --train-query=4 --two_stage=1 --scheduler_regime 0
 ```
-
-## Detection inference and evaluation:
+### Classification testing:
+```
+python test.py --load=./experiments/train_cub_1/last_epoch.pth --network=ResNet_star_2stage --head StarNet --query 5 --episode 250 --dataset cub --two_stage 1 --split_head_scales 1 --stage2_mode 1 --vote_prob_nrm_type 1
+```
+## Detection testing:
 Just remove the `--do_train` argument and set `eval_iters` to a positive value to enable the test performance output:
 
 ```

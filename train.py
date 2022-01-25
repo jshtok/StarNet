@@ -676,7 +676,7 @@ def main():
 
             boxes_query, emb_query, emb_support,data_query, data_support,labels_query,labels_support,  s2_emb_support,s2_emb_query, \
                 cat_ords = process_batch_data(batch, embedding_net_st1,embedding_net_st2, opt)
-            logit_query = cls_head(emb_query, emb_support, labels_support, opt.test_way, opt.val_shot, s2_query=s2_emb_query, s2_support=s2_emb_support, tb=tb,
+            logit_query = cls_head(emb_query, emb_support, labels_support, opt.test_way, opt.val_shot, s2_query=s2_emb_query, s2_support=s2_emb_support,# tb=tb,
                                    inputs=(data_support, data_query), tb_prefix='val_', opt=opt, img_save_path=dets_folder)
             if type(logit_query) is tuple:
                 prox_query_set = logit_query[3]
